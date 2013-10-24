@@ -39,7 +39,7 @@ while start <= how_many
     a=1   
     if array1[2].include? 'char'
       while a<=array2[2].to_i
-        o = [('a'..'z','A'..'Z')].map{|r| r.to_a}.flatten
+        o = [('a'..'z'),('A'..'Z')].map{|r| r.to_a}.flatten
         char = (0..1).map{ o[rand(o.length)].chr}.join
         print char,' '
         a=a+1
