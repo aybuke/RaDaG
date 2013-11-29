@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'optparse'
 
 class Parts
 # generated random time.format: '973492011' 
@@ -172,16 +173,30 @@ class Qmail_Log < Parts
   end 
 end
 
+options = {:file => nil}
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: script.rb [options] [options] file"
+
+  opts.on('-f', '--file') do |file|
+    options[:file] = file
+  end
+end
+optparse.parse!
+
+if options[:file]
+  exec("ruby qmail.rb > log.txt")
+end
+
 
 obj = Qmail_Log.new
 obj.rblsmtpd(2)
-obj.tcpserver1(2)
-obj.qmail_send(2)
-obj.tcpserver2(2)
-obj.tcpserver3(3)
-obj.jgreylist(1)
-obj.spf(4)
-obj.greetdelay(1)
-obj.auth(2)
-obj.mailrcpt(1)
+#obj.tcpserver1(2)
+#obj.qmail_send(2)
+#obj.tcpserver2(2)
+#obj.tcpserver3(3)
+#obj.jgreylist(1)
+#obj.spf(4)
+#obj.greetdelay(1)
+#obj.auth(2)
+#obj.mailrcpt(1)
 
